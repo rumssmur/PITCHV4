@@ -1253,7 +1253,7 @@ function updateHomeLiveCards() {
 
 
 // TheSportsDB — no auth, no CORS issues, works from file:// on any device
-async async function loadTheSportsDBFallback() {
+async function loadTheSportsDBFallback() {
   try {
     // Fetch live events first
     const liveRes  = await fetch('https://www.thesportsdb.com/api/v1/json/3/eventslive.php');
@@ -1930,13 +1930,13 @@ const statsData = {
     {rank:3,emoji:'🇬🇭',name:'Antoine Semenyo',club:'Bmouth/City',val:19,label:'PL Goals',max:27,photo:''},
     {rank:4,emoji:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',name:'Ollie Watkins',club:'Aston Villa',val:16,label:'PL Goals',max:27,photo:''},
     {rank:5,emoji:'🇵🇹',name:'Joao Pedro',club:'Chelsea',val:15,label:'PL Goals',max:27,photo:''},
-    {rank:6,emoji:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',name:'M. Gibbs-White',club:'Nott'm Forest',val:15,label:'PL Goals',max:27,photo:''},
+    {rank:6,emoji:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',name:'M. Gibbs-White',club:'Nottm Forest',val:15,label:'PL Goals',max:27,photo:''},
     {rank:7,emoji:'🇸🇪',name:'Viktor Gyokeres',club:'Arsenal',val:14,label:'PL Goals',max:27,photo:''},
   ],
   assists:[
     {rank:1,emoji:'🇵🇹',name:'Bruno Fernandes',club:'Man United',val:21,label:'PL Assists',max:21,photo:'https://r2.thesportsdb.com/images/media/player/thumb/1kfayc1700821747.jpg'},
     {rank:2,emoji:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',name:'Bukayo Saka',club:'Arsenal',val:14,label:'PL Assists',max:21,photo:'https://r2.thesportsdb.com/images/media/player/thumb/axl31b1769332282.jpg'},
-    {rank:3,emoji:'🇩🇰',name:'Pascal Groß',club:'Man United',val:11,label:'PL Assists',max:21,photo:''},
+    {rank:3,emoji:'🇩🇰',name:'Pascal Gross',club:'Man United',val:11,label:'PL Assists',max:21,photo:''},
     {rank:4,emoji:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',name:'Cole Palmer',club:'Chelsea',val:10,label:'PL Assists',max:21,photo:'https://r2.thesportsdb.com/images/media/player/thumb/r7yrsa1770541322.jpg'},
     {rank:5,emoji:'🇧🇷',name:'Martinelli',club:'Arsenal',val:9,label:'PL Assists',max:21,photo:''},
     {rank:6,emoji:'🇳🇴',name:'Erling Haaland',club:'Man City',val:8,label:'PL Assists',max:21,photo:'https://r2.thesportsdb.com/images/media/player/thumb/bb1agj1727415216.jpg'},
