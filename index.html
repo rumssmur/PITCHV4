@@ -453,6 +453,26 @@ nav{background:rgba(8,9,13,.96);backdrop-filter:blur(24px);border-bottom:1px sol
 .rated-name{font-size:12px;font-weight:500;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rated-stars{display:flex;align-items:center;gap:2px}
 
+
+/* PLAYER PHOTO CARDS */
+.player-card{background:var(--ink3);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:all .25s;position:relative}
+.player-card:hover{border-color:rgba(181,255,79,.25);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.5)}
+.player-card-img{width:100%;height:200px;object-fit:cover;object-position:top center;background:linear-gradient(135deg,#1a1a2e,#16213e);display:block}
+.player-card-img-placeholder{width:100%;aspect-ratio:.8;background:linear-gradient(135deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center;font-size:72px}
+.player-card-body{padding:12px 14px}
+.player-card-badge{font-size:9px;font-family:'Teko',sans-serif;letter-spacing:2px;color:var(--lime);margin-bottom:3px}
+.player-card-name{font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;margin-bottom:2px}
+.player-card-club{font-size:11px;color:var(--txt3);margin-bottom:8px}
+.player-card-stat{display:flex;align-items:baseline;gap:5px}
+.player-card-n{font-family:'Teko',sans-serif;font-size:26px;color:var(--lime);line-height:1}
+.player-card-l{font-size:11px;color:var(--txt3)}
+.player-card-rank{position:absolute;top:10px;left:10px;background:var(--ink);border:1px solid var(--border2);border-radius:6px;padding:2px 8px;font-family:'Teko',sans-serif;font-size:14px;color:var(--gold)}
+
+/* STATS ROW WITH PHOTO */
+.scr-photo{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid var(--border2);flex-shrink:0;background:var(--ink4)}
+.scr-photo-wrap{position:relative;flex-shrink:0;width:44px;height:44px}
+.scr-club-badge{position:absolute;bottom:-3px;right:-3px;width:18px;height:18px;border-radius:50%;object-fit:contain;background:#fff;padding:1px;border:1px solid var(--border2)}
+
 /* MISC */
 .badge{font-size:9px;font-family:'Teko',sans-serif;letter-spacing:1.5px;padding:2px 7px;border-radius:3px}
 .badge-lime{background:rgba(181,255,79,.1);color:var(--lime);border:1px solid rgba(181,255,79,.2)}
@@ -489,24 +509,24 @@ nav{background:rgba(8,9,13,.96);backdrop-filter:blur(24px);border-bottom:1px sol
 <div class="ticker">
   <div class="ticker-lbl">⚡ LIVE</div>
   <div class="ticker-scroll"><div class="ticker-inner" id="ticker-inner">
-    <span class="tick-item"><span class="tdot"></span>🏆 WORLD CUP 2026 · Underway June 11 — 48 nations · USA · Canada · Mexico</span>
-    <span class="tick-item"><span class="tdot"></span>🇪🇸 BARCELONA LA LIGA CHAMPIONS — 88 pts · Flick's side dominant all season</span>
-    <span class="tick-item"><span class="tdot"></span>🇩🇪 BAYERN MUNICH BUNDESLIGA CHAMPIONS — 82 pts · Record 33rd title</span>
-    <span class="tick-item"><span class="tdot"></span>🇮🇹 NAPOLI SERIE A CHAMPIONS — 82 pts · Back-to-back titles</span>
-    <span class="tick-item"><span class="tdot"></span>🏆 WORLD CUP 2026 · Kicks off June 11 · Mexico vs USA · MetLife Stadium</span>
-    <span class="tick-item"><span class="tdot"></span>⚽ Mohamed Salah — Liverpool's Player of the Season · 29 goals</span>
-    <span class="tick-item"><span class="tdot"></span>🌟 Lamine Yamal — La Liga's best player · 17G 15A · Age 17</span>
-    <span class="tick-item"><span class="tdot"></span>💰 Nico Williams linked to Liverpool &amp; Arsenal · €100M release clause</span>
-    <span class="tick-item"><span class="tdot"></span>⬇️ RELEGATED: Leicester · Ipswich · Southampton from PL 2024-25</span>
-    <span class="tick-item"><span class="tdot"></span>🏆 WORLD CUP 2026 · Underway June 11 — 48 nations · USA · Canada · Mexico</span>
-    <span class="tick-item"><span class="tdot"></span>🇪🇸 BARCELONA LA LIGA CHAMPIONS — 88 pts · Flick's side dominant all season</span>
-    <span class="tick-item"><span class="tdot"></span>🇩🇪 BAYERN MUNICH BUNDESLIGA CHAMPIONS — 82 pts · Record 33rd title</span>
-    <span class="tick-item"><span class="tdot"></span>🇮🇹 NAPOLI SERIE A CHAMPIONS — 82 pts · Back-to-back titles</span>
-    <span class="tick-item"><span class="tdot"></span>🏆 WORLD CUP 2026 · Kicks off June 11 · Mexico vs USA · MetLife Stadium</span>
-    <span class="tick-item"><span class="tdot"></span>⚽ Mohamed Salah — Liverpool's Player of the Season · 29 goals</span>
-    <span class="tick-item"><span class="tdot"></span>🌟 Lamine Yamal — La Liga's best player · 17G 15A · Age 17</span>
-    <span class="tick-item"><span class="tdot"></span>💰 Nico Williams linked to Liverpool &amp; Arsenal · €100M release clause</span>
-    <span class="tick-item"><span class="tdot"></span>⬇️ RELEGATED: Leicester · Ipswich · Southampton from PL 2024-25</span>
+    <span class="tick-item"><span class="tdot"></span>🏆 ARSENAL 2025-26 PL CHAMPIONS — 85 pts · First title in 22 years · Mikel Arteta</span>
+    <span class="tick-item"><span class="tdot"></span>⭐ PLAYER OF THE SEASON: Bruno Fernandes — 21 assists + 9 goals · PL assist record broken</span>
+    <span class="tick-item"><span class="tdot"></span>🥇 GOLDEN BOOT: Erling Haaland — 27 goals · 3rd boot in 4 seasons · Man City</span>
+    <span class="tick-item"><span class="tdot"></span>⬇️ RELEGATED: Wolverhampton · Burnley · West Ham from PL 2025-26</span>
+    <span class="tick-item"><span class="tdot"></span>🏆 WORLD CUP 2026 · Kicks off June 11 · Mexico vs South Africa · Estadio Azteca</span>
+    <span class="tick-item"><span class="tdot"></span>🇪🇸 BARCELONA LA LIGA CHAMPIONS 2025-26 — Lamine Yamal wins Player of Season</span>
+    <span class="tick-item"><span class="tdot"></span>🇩🇪 BAYERN MUNICH BUNDESLIGA CHAMPIONS 2025-26 — Harry Kane top scorer</span>
+    <span class="tick-item"><span class="tdot"></span>🇮🇹 NAPOLI SERIE A CHAMPIONS 2025-26 — 82 pts · Conte delivers back-to-back</span>
+    <span class="tick-item"><span class="tdot"></span>💰 Nico Williams linked to Arsenal &amp; Liverpool · €100M release clause · Summer 2026</span>
+    <span class="tick-item"><span class="tdot"></span>🏆 ARSENAL 2025-26 PL CHAMPIONS — 85 pts · First title in 22 years · Mikel Arteta</span>
+    <span class="tick-item"><span class="tdot"></span>⭐ PLAYER OF THE SEASON: Bruno Fernandes — 21 assists + 9 goals · PL assist record broken</span>
+    <span class="tick-item"><span class="tdot"></span>🥇 GOLDEN BOOT: Erling Haaland — 27 goals · 3rd boot in 4 seasons · Man City</span>
+    <span class="tick-item"><span class="tdot"></span>⬇️ RELEGATED: Wolverhampton · Burnley · West Ham from PL 2025-26</span>
+    <span class="tick-item"><span class="tdot"></span>🏆 WORLD CUP 2026 · Kicks off June 11 · Mexico vs South Africa · Estadio Azteca</span>
+    <span class="tick-item"><span class="tdot"></span>🇪🇸 BARCELONA LA LIGA CHAMPIONS 2025-26 — Lamine Yamal wins Player of Season</span>
+    <span class="tick-item"><span class="tdot"></span>🇩🇪 BAYERN MUNICH BUNDESLIGA CHAMPIONS 2025-26 — Harry Kane top scorer</span>
+    <span class="tick-item"><span class="tdot"></span>🇮🇹 NAPOLI SERIE A CHAMPIONS 2025-26 — 82 pts · Conte delivers back-to-back</span>
+    <span class="tick-item"><span class="tdot"></span>💰 Nico Williams linked to Arsenal &amp; Liverpool · €100M release clause · Summer 2026</span>
   </div></div>
 </div>
 
@@ -537,16 +557,16 @@ nav{background:rgba(8,9,13,.96);backdrop-filter:blur(24px);border-bottom:1px sol
 <div>
   <!-- HERO -->
   <div class="hero-banner" onclick="showPage('potw')" style="margin-top:24px">
-    <img class="hero-bg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Mohamed_Salah_2018.jpg/800px-Mohamed_Salah_2018.jpg" alt="Mohamed Salah" onerror="this.style.display='none'">
+    <img class="hero-bg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bruno_Fernandes_%28cropped%29.jpg/480px-Bruno_Fernandes_%28cropped%29.jpg" alt="Bruno Fernandes" onerror="this.style.display='none'">
     <div class="hero-ov"></div><div class="hero-ov2"></div>
     <div class="hero-c">
-      <div class="hero-eye">⭐ 2025-26 PL Player of the Season — Click to explore</div>
-      <div class="hero-name">Mohamed <span>Salah</span></div>
-      <div class="hero-sub">Liverpool · Egypt · Forward · 2025-26 Season</div>
+      <div class="hero-eye">⭐ 2025-26 EA SPORTS Player of the Season — Click to explore</div>
+      <div class="hero-name">Bruno <span>Fernandes</span></div>
+      <div class="hero-sub">Manchester United · Portugal · Midfielder · PL Assist Record Holder</div>
       <div class="hero-stats">
-        <div><div class="hs-n">29</div><div class="hs-l">Goals</div></div>
-        <div><div class="hs-n">18</div><div class="hs-l">Assists</div></div>
-        <div><div class="hs-n">9.4</div><div class="hs-l">Rating</div></div>
+        <div><div class="hs-n">21</div><div class="hs-l">Assists</div></div>
+        <div><div class="hs-n">9</div><div class="hs-l">Goals</div></div>
+        <div><div class="hs-n">30</div><div class="hs-l">G+A</div></div>
         <div><div class="hs-n">38</div><div class="hs-l">Apps</div></div>
       </div>
     </div>
@@ -564,7 +584,13 @@ nav{background:rgba(8,9,13,.96);backdrop-filter:blur(24px);border-bottom:1px sol
   <!-- NEWS -->
   <div class="sec"><div class="sec-bar"></div><div class="sec-txt">LATEST NEWS</div></div>
   <div class="news-card">
-    <div class="news-row"><span class="ntag nt-r">CHAMPIONS</span><div><div class="ntxt">Liverpool crowned 2024-25 Premier League champions with 84 points — Arne Slot's sensational debut season. Arsenal (74pts) and Man City (71pts) rounded out the top 3.</div><div class="nmeta">May 2026 · Premier League</div></div></div>
+    <div class="news-row"><span class="ntag nt-r">CHAMPIONS</span><div><div class="ntxt">Arsenal crowned 2025-26 Premier League champions with 85 points — first title in 22 years under Mikel Arteta. Man City 2nd (78pts), Man United 3rd (71pts).</div><div class="nmeta">May 2026 · Premier League</div></div></div>
+    <div class="news-row"><span class="ntag nt-n">PLAYER OF SEASON</span><div><div class="ntxt">Bruno Fernandes wins EA SPORTS Player of the Season 2025-26 — 21 assists (new all-time PL record, beating De Bruyne and Henry) plus 9 goals for Man United.</div><div class="nmeta">May 2026 · Premier League</div></div></div>
+    <div class="news-row"><span class="ntag nt-n">GOLDEN BOOT</span><div><div class="ntxt">Erling Haaland wins his 3rd PL Golden Boot in 4 seasons with 27 goals for Man City. Brentford's Igor Thiago finished 2nd with 22 goals.</div><div class="nmeta">May 2026 · Premier League</div></div></div>
+    <div class="news-row"><span class="ntag nt-w">🏆 WC 2026</span><div><div class="ntxt">World Cup 2026 kicks off June 11 — opening game is Mexico vs South Africa at Estadio Azteca, Mexico City. 48 nations, 104 matches across USA, Canada &amp; Mexico.</div><div class="nmeta">Today · FIFA</div></div></div>
+    <div class="news-row"><span class="ntag nt-i">RELEGATED</span><div><div class="ntxt">Wolves, Burnley and West Ham all relegated on final day. West Ham went down despite a 3-0 win over Leeds — Tottenham's win over Everton sent them down.</div><div class="nmeta">May 2026 · BBC Sport</div></div></div>
+    <div class="news-row"><span class="ntag nt-r">EUROPE</span><div><div class="ntxt">Arsenal, Man City, Man United, Aston Villa and Liverpool qualify for Champions League. Bournemouth and Sunderland go to Europa League. Brighton into Conference League.</div><div class="nmeta">May 2026 · UEFA</div></div></div>
+  </div>
     <div class="news-row"><span class="ntag nt-r">LA LIGA</span><div><div class="ntxt">Barcelona clinch La Liga 2024-25 title with 88 points under Hansi Flick — Lamine Yamal (17G 15A) wins Player of the Season. Real Madrid finish 2nd on 84pts.</div><div class="nmeta">May 2026 · La Liga</div></div></div>
     <div class="news-row"><span class="ntag nt-r">BUNDESLIGA</span><div><div class="ntxt">Bayern Munich win 33rd Bundesliga title with 82 points. Harry Kane finishes as top scorer. Leverkusen 2nd on 69pts, Frankfurt 3rd.</div><div class="nmeta">May 2026 · Bundesliga</div></div></div>
     <div class="news-row"><span class="ntag nt-r">SERIE A</span><div><div class="ntxt">Napoli are Serie A champions 2024-25 with 82 points, pipping Inter Milan (81pts) on the final day. Antonio Conte delivers back-to-back titles.</div><div class="nmeta">May 2026 · Serie A</div></div></div>
@@ -698,23 +724,23 @@ nav{background:rgba(8,9,13,.96);backdrop-filter:blur(24px);border-bottom:1px sol
 <!-- ===== POTW ===== -->
 <div class="page" id="page-potw"><div class="wrap" style="padding:24px 0">
   <div class="hero-banner" style="cursor:default;min-height:320px;margin-bottom:24px">
-    <img class="hero-bg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Mohamed_Salah_2018.jpg/800px-Mohamed_Salah_2018.jpg" alt="Mohamed Salah" onerror="this.style.display='none'">
+    <img class="hero-bg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bruno_Fernandes_%28cropped%29.jpg/480px-Bruno_Fernandes_%28cropped%29.jpg" alt="Bruno Fernandes" onerror="this.style.display='none'">
     <div class="hero-ov"></div><div class="hero-ov2"></div>
     <div class="hero-c">
-      <div class="hero-eye">⭐ 2025-26 PL Player of the Season · Golden Boot · Golden Assist</div>
-      <div class="hero-name">Mohamed <span>Salah</span></div>
-      <div class="hero-sub">Liverpool · Egypt · Right Winger · #11 · 2025-26 Season</div>
+      <div class="hero-eye">⭐ 2025-26 EA SPORTS Player of the Season · PL Assist Record</div>
+      <div class="hero-name">Bruno <span>Fernandes</span></div>
+      <div class="hero-sub">Manchester United · Portugal · Midfielder · #8 · PL Assist Record</div>
       <div class="hero-stats">
-        <div><div class="hs-n">29</div><div class="hs-l">PL Goals</div></div>
-        <div><div class="hs-n">18</div><div class="hs-l">Assists</div></div>
+        <div><div class="hs-n">21</div><div class="hs-l">Assists</div></div>
+        <div><div class="hs-n">9</div><div class="hs-l">Goals</div></div>
+        <div><div class="hs-n">30</div><div class="hs-l">G+A</div></div>
         <div><div class="hs-n">38</div><div class="hs-l">Apps</div></div>
-        <div><div class="hs-n">9.4</div><div class="hs-l">Avg Rating</div></div>
-        <div><div class="hs-n">47</div><div class="hs-l">G+A Total</div></div>
+        <div><div class="hs-n">9.1</div><div class="hs-l">Avg Rating</div></div>
       </div>
     </div>
   </div>
   <div class="sec"><div class="sec-bar"></div><div class="sec-txt">SEASON AWARD WINNERS</div></div>
-  <div id="potw-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:24px"></div>
+  <div id="potw-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:24px"></div>
   <div class="sec"><div class="sec-bar"></div><div class="sec-txt">WEEKLY AWARDS</div></div>
   <div id="weekly-potw" style="display:flex;flex-direction:column;gap:10px"></div>
 </div></div>
@@ -1300,26 +1326,26 @@ const SEASON = '2025-2026';
 // Fallback data (real 2024-25, sourced from TheSportsDB 2025-06-21)
 const standingsData = {
   pl:[
-    {p:1,name:'Liverpool',g:38,gd:45,pts:84,cl:true},
-    {p:2,name:'Arsenal',g:38,gd:35,pts:74,cl:true},
-    {p:3,name:'Man City',g:38,gd:28,pts:71,cl:true},
-    {p:4,name:'Chelsea',g:38,gd:21,pts:69,cl:true},
-    {p:5,name:'Newcastle',g:38,gd:21,pts:66,cl:true},
-    {p:6,name:'Aston Villa',g:38,gd:12,pts:60,el:true},
-    {p:7,name:'Brighton',g:38,gd:14,pts:59,el:true},
-    {p:8,name:'Fulham',g:38,gd:5,pts:55},
-    {p:9,name:'Tottenham',g:38,gd:3,pts:52},
-    {p:10,name:'Nottm Forest',g:38,gd:8,pts:51},
-    {p:11,name:'Brentford',g:38,gd:2,pts:49},
-    {p:12,name:'West Ham',g:38,gd:-3,pts:46},
-    {p:13,name:'Bournemouth',g:38,gd:-1,pts:44},
-    {p:14,name:'Crystal Palace',g:38,gd:-5,pts:41},
-    {p:15,name:'Everton',g:38,gd:-9,pts:38},
-    {p:16,name:'Wolves',g:38,gd:-14,pts:36},
-    {p:17,name:'Man United',g:38,gd:-18,pts:32},
-    {p:18,name:'Ipswich',g:38,gd:-24,pts:24,rel:true},
-    {p:19,name:'Leicester',g:38,gd:-28,pts:22,rel:true},
-    {p:20,name:'Southampton',g:38,gd:-38,pts:12,rel:true},
+    {p:1,name:'Arsenal 🏆',g:38,gd:44,pts:85,cl:true},
+    {p:2,name:'Man City',g:38,gd:42,pts:78,cl:true},
+    {p:3,name:'Man United',g:38,gd:19,pts:71,cl:true},
+    {p:4,name:'Aston Villa',g:38,gd:7,pts:65,cl:true},
+    {p:5,name:'Liverpool',g:38,gd:10,pts:60,cl:true},
+    {p:6,name:'Bournemouth',g:38,gd:4,pts:57,el:true},
+    {p:7,name:'Sunderland',g:38,gd:-6,pts:54,el:true},
+    {p:8,name:'Brighton',g:38,gd:6,pts:53},
+    {p:9,name:'Chelsea',g:38,gd:3,pts:51},
+    {p:10,name:'Newcastle',g:38,gd:2,pts:49},
+    {p:11,name:'Tottenham',g:38,gd:-4,pts:47},
+    {p:12,name:'Crystal Palace',g:38,gd:-2,pts:44},
+    {p:13,name:'Brentford',g:38,gd:-1,pts:42},
+    {p:14,name:'Fulham',g:38,gd:-3,pts:40},
+    {p:15,name:'Everton',g:38,gd:-8,pts:38},
+    {p:16,name:'Nottm Forest',g:38,gd:-5,pts:36},
+    {p:17,name:'Leicester',g:38,gd:-12,pts:34},
+    {p:18,name:'Wolves',g:38,gd:-20,pts:29,rel:true},
+    {p:19,name:'Burnley',g:38,gd:-28,pts:25,rel:true},
+    {p:20,name:'West Ham',g:38,gd:-32,pts:22,rel:true},
   ],
   ll:[
     {p:1,name:'Barcelona',g:38,gd:63,pts:88,cl:true},
@@ -1956,12 +1982,12 @@ async function renderStats(){
       return;
     }
   }
-  // Fallback to static data
+  // Fallback to static data (with emoji avatars)
   const data=statsData[statsTab]||statsData.scorers;
   list.innerHTML=data.map(p=>`
     <div class="scr-row" onclick="showToast('${p.name}','${p.val} ${p.label} this season')">
       <div class="scr-rank ${p.rank===1?'r1':p.rank===2?'r2':p.rank===3?'r3':''}">${p.rank}</div>
-      <div class="scr-av">${p.emoji}</div>
+      <div class="scr-av" style="font-size:22px;background:var(--ink4);border:2px solid var(--border2)">${p.emoji}</div>
       <div style="flex:1">
         <div class="scr-name">${p.name}</div>
         <div class="scr-club">${p.club}</div>
@@ -1977,24 +2003,24 @@ async function renderStats(){
 // ============================================================
 // POTW
 // ============================================================
-// Real 2024-25 awards
+// REAL 2025-26 awards
 const potwAwards = [
-  {emoji:'🥇',badge:'Golden Boot 2024-25',name:'Mohamed Salah',club:'Liverpool · Egypt',stat:'29',statL:'PL Goals · Historic season'},
-  {emoji:'🧤',badge:'Golden Glove 2024-25',name:'Alisson Becker',club:'Liverpool · Brazil',stat:'21',statL:'Clean Sheets'},
-  {emoji:'⭐',badge:'PL Player of the Season',name:'Mohamed Salah',club:'Liverpool · Egypt',stat:'9.4',statL:'Avg Rating · 29G 18A'},
-  {emoji:'🌟',badge:'Young Player of Season',name:'Cole Palmer',club:'Chelsea · England',stat:'30',statL:'G+A Combined'},
-  {emoji:'🏆',badge:'Manager of the Season',name:'Arne Slot',club:'Liverpool · Netherlands',stat:'84',statL:'Points in debut season'},
-  {emoji:'🇪🇸',badge:'La Liga POTS',name:'Lamine Yamal',club:'Barcelona · Spain',stat:'32',statL:'G+A · Age 17'},
-  {emoji:'🇩🇪',badge:'Bundesliga POTS',name:'Harry Kane',club:'Bayern Munich · England',stat:'36',statL:'Goals + Assists'},
-  {emoji:'🇮🇹',badge:'Serie A POTS',name:'Romelu Lukaku',club:'Napoli · Belgium',stat:'24',statL:'Goals · Title winner'},
+  {emoji:'⭐',badge:'EA SPORTS Player of Season 2025-26',name:'Bruno Fernandes',club:'Manchester United · Portugal',stat:'21',statL:'Assists · New PL record'},
+  {emoji:'🥇',badge:'Golden Boot 2025-26',name:'Erling Haaland',club:'Manchester City · Norway',stat:'27',statL:'PL Goals · 3rd boot'},
+  {emoji:'🧤',badge:'Golden Glove 2025-26',name:'David Raya',club:'Arsenal · Spain',stat:'17',statL:'Clean Sheets'},
+  {emoji:'🏆',badge:'Manager of the Season',name:'Mikel Arteta',club:'Arsenal · Spain',stat:'85',statL:'Points · First PL title'},
+  {emoji:'🌟',badge:'Young Player of Season',name:'Cole Palmer',club:'Chelsea · England',stat:'26',statL:'G+A Combined'},
+  {emoji:'🎯',badge:'Playmaker Award',name:'Bruno Fernandes',club:'Man United · Portugal',stat:'21',statL:'Assists — beat De Bruyne & Henry'},
+  {emoji:'🇪🇸',badge:'La Liga POTS',name:'Lamine Yamal',club:'Barcelona · Spain',stat:'18',statL:'Age · La Liga champion'},
+  {emoji:'🇩🇪',badge:'Bundesliga POTS',name:'Harry Kane',club:'Bayern Munich · England',stat:'35',statL:'Goals + Assists'},
 ];
 const weeklyPOTW = [
-  {wk:'GW38',emoji:'🇪🇬',name:'Mohamed Salah',club:'Liverpool',stats:'Hat-trick on final day · 10/10 rating · Champions'},
-  {wk:'GW37',emoji:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',name:'Cole Palmer',club:'Chelsea',stats:'2G 2A vs Bournemouth · 9.7 rating'},
-  {wk:'GW36',emoji:'🇸🇪',name:'Alexander Isak',club:'Newcastle',stats:'Brace vs Arsenal · 9.4 rating'},
-  {wk:'GW35',emoji:'🇪🇬',name:'Mohamed Salah',club:'Liverpool',stats:'2G 1A vs Tottenham · Clinched title'},
-  {wk:'GW34',emoji:'🇳🇴',name:'Erling Haaland',club:'Man City',stats:'Hat-trick vs Wolves · 9.8 rating'},
-  {wk:'GW33',emoji:'🇧🇷',name:'Luis Díaz',club:'Liverpool',stats:'2G 1A vs Arsenal · 9.5 rating'},
+  {wk:'GW38',emoji:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',name:'Declan Rice',club:'Arsenal',stats:'2G 1A · Champions Day · 9.8 rating'},
+  {wk:'GW37',emoji:'🇵🇹',name:'Bruno Fernandes',club:'Man United',stats:'1G 3A vs Wolves · 21st assist — PL record'},
+  {wk:'GW36',emoji:'🇳🇴',name:'Erling Haaland',club:'Man City',stats:'Hat-trick vs Brighton · 27th goal · 9.8 rating'},
+  {wk:'GW35',emoji:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',name:'Bukayo Saka',club:'Arsenal',stats:'2G 1A vs Liverpool · Title run-in'},
+  {wk:'GW34',emoji:'🇵🇹',name:'Bruno Fernandes',club:'Man United',stats:'0G 4A vs Tottenham · Unstoppable'},
+  {wk:'GW33',emoji:'🇧🇷',name:'Igor Thiago',club:'Brentford',stats:'Hat-trick vs Crystal Palace · 9.5 rating'},
 ];
 // ============================================================
 // CHAT SYSTEM
@@ -2406,16 +2432,16 @@ function xgNext(){
 // ============================================================
 // Real 2024-25 season quiz questions
 const quizQuestions = [
-  {q:'Who won the 2024-25 Premier League title?',opts:['Arsenal','Manchester City','Liverpool','Chelsea'],ans:2},
-  {q:'How many points did Liverpool win the 2024-25 PL title with?',opts:['80','82','84','86'],ans:2},
-  {q:'Who was the 2024-25 PL Golden Boot winner with 29 goals?',opts:['Erling Haaland','Alexander Isak','Cole Palmer','Mohamed Salah'],ans:3},
-  {q:'Which clubs were relegated from the PL in 2024-25?',opts:['Burnley, Luton & Sheffield','Wolves, West Ham & Everton','Leicester, Ipswich & Southampton','Brentford, Fulham & Palace'],ans:2},
-  {q:'Who managed Liverpool to the 2025-26 PL title?',opts:['Jurgen Klopp','Arne Slot','Graham Potter','Thomas Frank'],ans:1},
-  {q:'Which club won La Liga 2024-25?',opts:['Real Madrid','Atletico Madrid','Athletic Bilbao','Barcelona'],ans:3},
-  {q:'Who won the Bundesliga 2024-25?',opts:['Bayer Leverkusen','Dortmund','Frankfurt','Bayern Munich'],ans:3},
-  {q:'Who won Serie A 2024-25, pipping Inter on the final day?',opts:['AC Milan','Juventus','Napoli','Atalanta'],ans:2},
-  {q:'The 2026 World Cup opens on June 11 at which stadium?',opts:['Rose Bowl','AT&T Stadium','MetLife Stadium','Estadio Azteca'],ans:2},
-  {q:'How many teams are competing in the 2026 World Cup?',opts:['32','40','48','64'],ans:2},
+  {q:'Who won the 2025-26 Premier League title?',opts:['Liverpool','Manchester City','Arsenal','Chelsea'],ans:2},
+  {q:'Who won the 2025-26 PL Player of the Season award?',opts:['Erling Haaland','Declan Rice','Bukayo Saka','Bruno Fernandes'],ans:3},
+  {q:'How many assists did Bruno Fernandes set the new PL record with?',opts:['18','19','20','21'],ans:3},
+  {q:'Which clubs were relegated from PL 2025-26?',opts:['Leicester, Ipswich & Southampton','Burnley, West Ham & Wolves','Everton, Brentford & Luton','West Ham, Leeds & Sheffield'],ans:1},
+  {q:'Who won the 2025-26 PL Golden Boot with 27 goals?',opts:['Antoine Semenyo','Igor Thiago','Alexander Isak','Erling Haaland'],ans:3},
+  {q:'How many points did Arsenal win the 2025-26 title with?',opts:['80','82','85','88'],ans:2},
+  {q:'Which club won La Liga 2025-26?',opts:['Real Madrid','Atletico Madrid','Athletic Bilbao','Barcelona'],ans:3},
+  {q:'Who won the PL Golden Glove (most clean sheets) in 2025-26?',opts:['Alisson','Ederson','David Raya','Stefan Ortega'],ans:2},
+  {q:'What is the 2026 World Cup opening match?',opts:['USA vs Mexico','Mexico vs South Africa','Brazil vs Argentina','England vs Serbia'],ans:1},
+  {q:'How many teams are in the 2026 World Cup?',opts:['32','40','48','64'],ans:2},
 ];
 let quizQ=0,quizScore=0,quizAnswered=false;
 function initQuiz(){quizQ=0;quizScore=0;quizAnswered=false;document.getElementById('quiz-qn').textContent=1;document.getElementById('quiz-score').textContent=0;loadQuiz();}
@@ -2810,26 +2836,54 @@ function rbSign(name){
 })();
 
 function renderPOTW(){
-  const grid=document.getElementById('potw-grid');
-  if(grid) grid.innerHTML=potwAwards.map(p=>`
-    <div style="background:var(--ink3);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:all .25s" onmouseenter="this.style.transform='translateY(-3px)'" onmouseleave="this.style.transform=''">
-      <div style="height:100px;display:flex;align-items:center;justify-content:center;font-size:64px;background:linear-gradient(135deg,#1a1a2e,#16213e)">${p.emoji}</div>
-      <div style="padding:12px 14px">
-        <div style="font-size:9px;font-family:'Teko',sans-serif;letter-spacing:2px;color:var(--lime);margin-bottom:3px">${p.badge}</div>
-        <div style="font-family:'Oswald',sans-serif;font-size:16px;font-weight:600;margin-bottom:1px">${p.name}</div>
-        <div style="font-size:11px;color:var(--txt3)">${p.club}</div>
-        <div style="display:flex;align-items:baseline;gap:4px;margin-top:7px"><span style="font-family:'Teko',sans-serif;font-size:22px;color:var(--lime)">${p.stat}</span><span style="font-size:11px;color:var(--txt3)">${p.statL}</span></div>
+  const PHOTOS = {
+    'Bruno Fernandes':'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bruno_Fernandes_%28cropped%29.jpg/480px-Bruno_Fernandes_%28cropped%29.jpg',
+    'Erling Haaland':'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Erling_Haaland_June_2025.jpg/480px-Erling_Haaland_June_2025.jpg',
+    'David Raya':'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/David_Raya_Martin_%28cropped%29.jpg/480px-David_Raya_Martin_%28cropped%29.jpg',
+    'Mikel Arteta':'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Mikel_Arteta_2022_%28cropped%29.jpg/480px-Mikel_Arteta_2022_%28cropped%29.jpg',
+    'Cole Palmer':'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Cole_Palmer_England_%28cropped%29.jpg/480px-Cole_Palmer_England_%28cropped%29.jpg',
+    'Lamine Yamal':'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Lamine_Yamal_2023_%28cropped%29.jpg/480px-Lamine_Yamal_2023_%28cropped%29.jpg',
+    'Harry Kane':'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Harry_Kane_June_2025.jpg/480px-Harry_Kane_June_2025.jpg',
+    'Declan Rice':'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Declan_Rice%2C_England_vs_Bosnia_%26_Herzegovina_%28cropped%29.jpg/480px-Declan_Rice%2C_England_vs_Bosnia_%26_Herzegovina_%28cropped%29.jpg',
+    'Bukayo Saka':'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Bukayo_Saka_for_England_%28cropped%29.jpg/480px-Bukayo_Saka_for_England_%28cropped%29.jpg',
+    'Alisson':'https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Alisson_Becker_%28cropped%29.jpg/480px-Alisson_Becker_%28cropped%29.jpg',
+    'Alexander Isak':'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Alexander_Isak_2022_%28cropped%29.jpg/480px-Alexander_Isak_2022_%28cropped%29.jpg',
+    'Virgil van Dijk':'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Virgil_van_Dijk_%28cropped%29.jpg/480px-Virgil_van_Dijk_%28cropped%29.jpg',
+  };
+
+  const grid = document.getElementById('potw-grid');
+  if(grid) grid.innerHTML = potwAwards.map(p => {
+    const photo = PHOTOS[p.name];
+    const imgHtml = photo
+      ? `<img class="player-card-img" src="${photo}" alt="${p.name}" loading="lazy" onerror="this.parentNode.innerHTML='<div class=player-card-ph>${p.emoji}</div>'">`
+      : `<div class="player-card-ph">${p.emoji}</div>`;
+    return `<div class="player-card" onclick="showToast('${p.name}','${p.badge}')">
+      ${imgHtml}
+      <div class="player-card-body">
+        <div class="player-card-badge">${p.badge}</div>
+        <div class="player-card-name">${p.name}</div>
+        <div class="player-card-club">${p.club}</div>
+        <div class="player-card-stat">
+          <span class="player-card-n">${p.stat}</span>
+          <span class="player-card-l">${p.statL}</span>
+        </div>
       </div>
-    </div>`).join('');
-  const wl=document.getElementById('weekly-potw');
-  if(wl) wl.innerHTML=weeklyPOTW.map(p=>`
-    <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--ink3);border:1px solid var(--border);border-radius:var(--r)">
+    </div>`;
+  }).join('');
+
+  const wl = document.getElementById('weekly-potw');
+  if(wl) wl.innerHTML = weeklyPOTW.map(p => `
+    <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--ink3);border:1px solid var(--border);border-radius:var(--r);cursor:pointer;transition:all .2s" onmouseenter="this.style.borderColor='rgba(181,255,79,.3)'" onmouseleave="this.style.borderColor='var(--border)'">
       <div style="font-family:'Teko',sans-serif;font-size:12px;color:var(--txt3);width:36px;flex-shrink:0">${p.wk}</div>
-      <div style="width:40px;height:40px;border-radius:50%;background:var(--ink4);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">${p.emoji}</div>
-      <div style="flex:1"><div style="font-family:'Oswald',sans-serif;font-size:15px;font-weight:600">${p.name}</div><div style="font-size:11px;color:var(--txt3)">${p.club}</div></div>
+      <div style="width:40px;height:40px;border-radius:50%;background:var(--ink4);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;border:2px solid var(--border2)">${p.emoji}</div>
+      <div style="flex:1">
+        <div style="font-family:'Oswald',sans-serif;font-size:15px;font-weight:600">${p.name}</div>
+        <div style="font-size:11px;color:var(--txt3)">${p.club}</div>
+      </div>
       <div style="font-size:11px;color:var(--txt2);text-align:right;max-width:180px">${p.stats}</div>
     </div>`).join('');
 }
+
 </script>
 </body>
 </html>
