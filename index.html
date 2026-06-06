@@ -40,6 +40,7 @@ nav{background:rgba(8,9,13,.96);backdrop-filter:blur(24px);border-bottom:1px sol
 .nav-links li a.active{color:var(--lime);background:rgba(181,255,79,.08)}
 .live-pill{display:flex;align-items:center;gap:7px;background:rgba(255,77,28,.12);border:1px solid rgba(255,77,28,.3);padding:5px 12px;border-radius:20px;font-size:11px;font-family:'Teko',sans-serif;letter-spacing:2px;color:var(--fire);flex-shrink:0}
 .ldot{width:7px;height:7px;border-radius:50%;background:var(--fire);animation:pf 1.2s ease infinite}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 @keyframes pf{0%,100%{box-shadow:0 0 0 0 rgba(255,77,28,.5)}50%{box-shadow:0 0 0 6px rgba(255,77,28,0)}}
 .pts-pill{display:flex;align-items:center;gap:6px;background:rgba(255,210,77,.1);border:1px solid rgba(255,210,77,.2);padding:5px 12px;border-radius:20px;font-family:'Teko',sans-serif;font-size:14px;color:var(--gold);flex-shrink:0;cursor:pointer}
 
@@ -609,10 +610,9 @@ nav{background:rgba(8,9,13,.96);backdrop-filter:blur(24px);border-bottom:1px sol
   </div>
   <div class="sec"><div class="sec-bar"></div><div class="sec-txt">LIVE &amp; UPCOMING</div><div class="sec-r" onclick="showPage('scores')">ALL SCORES →</div></div>
   <div class="matches-grid" id="home-matches">
-    <div style="grid-column:1/-1;padding:20px;text-align:center;color:var(--txt3);font-family:'Teko',sans-serif;letter-spacing:2px;font-size:13px">
-      <div style="font-size:24px;margin-bottom:8px">📡</div>
-      FETCHING LIVE DATA...
-      <div style="font-size:11px;margin-top:6px;color:var(--txt3);letter-spacing:0">Must be opened via <strong style="color:var(--lime)">http://</strong> not file:// for live data</div>
+    <div style="grid-column:1/-1;padding:20px;text-align:center;color:var(--txt3);font-family:'Teko',sans-serif;letter-spacing:2px;font-size:13px" id="home-loading">
+      <div style="font-size:24px;margin-bottom:8px;animation:spin 2s linear infinite;display:inline-block">⚽</div>
+      <div>FETCHING LIVE DATA...</div>
     </div>
   </div>
   <!-- NEWS -->
@@ -1253,21 +1253,29 @@ function updateHomeLiveCards() {
 
 
 // TheSportsDB — no auth, no CORS issues, works from file:// on any device
-async function loadTheSportsDBFallback() {
+async async function loadTheSportsDBFallback() {
   try {
     // Fetch live events first
     const liveRes  = await fetch('https://www.thesportsdb.com/api/v1/json/3/eventslive.php');
     const liveData = await liveRes.json();
     const liveEvts = (liveData.events || []).filter(e => e.strSport === 'Soccer');
 
-    // Fetch recent PL results
-    const pastRes  = await fetch('https://www.thesportsdb.com/api/v1/json/3/eventspastleague.php?id=4328');
-    const pastData = await pastRes.json();
-    const pastEvts = (pastData.events || []).slice(0, 8);
+    // Fetch recent results from PL + La Liga + Bundesliga + Serie A
+    const [plRes, llRes, blRes] = await Promise.all([
+      fetch('https://www.thesportsdb.com/api/v1/json/3/eventspastleague.php?id=4328'),
+      fetch('https://www.thesportsdb.com/api/v1/json/3/eventspastleague.php?id=4335'),
+      fetch('https://www.thesportsdb.com/api/v1/json/3/eventspastleague.php?id=4331'),
+    ]);
+    const [plData, llData, blData] = await Promise.all([plRes.json(), llRes.json(), blRes.json()]);
+    const pastEvts = [
+      ...(plData.events||[]).slice(0,4).map(e=>({...e,_league:'pl'})),
+      ...(llData.events||[]).slice(0,2).map(e=>({...e,_league:'ll'})),
+      ...(blData.events||[]).slice(0,2).map(e=>({...e,_league:'bl'})),
+    ];
 
     const mapEvent = (e, i, status) => ({
       id: 'tsdb-' + status + '-' + i,
-      league: 'pl',
+      league: e._league || 'pl',
       leagueLabel: (e.strLeague || 'Football') + ' · ' + (e.strSeason || '2025-26'),
       home: e.strHomeTeam || '',
       away: e.strAwayTeam || '',
@@ -2024,7 +2032,7 @@ async function renderStats(){
       <div class="scr-rank ${p.rank===1?'r1':p.rank===2?'r2':p.rank===3?'r3':''}">${p.rank}</div>
       <div style="position:relative;flex-shrink:0">
         ${p.photo
-          ? `<img src="${p.photo}" style="width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid var(--border2)" onerror="this.outerHTML='<div class=scr-av style=font-size:22px>${p.emoji}</div>'">`
+          ? `<img src="${p.photo}" style="width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid var(--border2)" onerror="this.style.display='none'">`
           : `<div class="scr-av" style="font-size:22px">${p.emoji}</div>`
         }
         <div style="position:absolute;bottom:-2px;right:-2px;background:var(--ink3);border-radius:3px;padding:1px 3px;font-size:8px;font-family:'Teko',sans-serif;color:var(--lime)">${p.rank===1?'#1':''}</div>
@@ -2859,21 +2867,8 @@ function rbSign(name){
   renderSidebarRated();
   const d=document.getElementById('pts-display');if(d)d.textContent=userPoints;
   const np=document.getElementById('nav-pts');if(np)np.textContent=userPoints;
-  // init home scores live display
-  const m1=liveMatches.find(m=>m.id==='wc-mex-usa');
-  const m2=liveMatches.find(m=>m.id==='wc-arg-can');
-  if(m1){
-    const s=document.getElementById('hm-s1a');if(s)s.textContent=m1.scoreH;
-    const s2=document.getElementById('hm-s1b');if(s2)s2.textContent=m1.scoreW;
-    const t=document.getElementById('hm-t1');if(t)t.textContent=m1.time+' ●';
-  }
-  if(m2){
-    const s=document.getElementById('hm-s2a');if(s)s.textContent=m2.scoreH;
-    const s2=document.getElementById('hm-s2b');if(s2)s2.textContent=m2.scoreW;
-    const t=document.getElementById('hm-t2');if(t)t.textContent=m2.time+' ●';
-  }
-  // restore hall
-  renderHall();
+  // Home matches filled by API on load — bootAPI() handles it
+    renderHall();
 })();
 
 function renderPOTW(){
@@ -2894,7 +2889,7 @@ function renderPOTW(){
   if(grid) grid.innerHTML = potwAwards.map(p => {
     const photo = PHOTOS[p.name];
     const imgHtml = photo
-      ? `<img class="player-card-img" src="${photo}" alt="${p.name}" loading="lazy" onerror="this.parentNode.innerHTML='<div class=player-card-ph>${p.emoji}</div>'">`
+      ? `<img class="player-card-img" src="${photo}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'">`
       : `<div class="player-card-ph">${p.emoji}</div>`;
     return `<div class="player-card" onclick="showToast('${p.name}','${p.badge}')">
       ${imgHtml}
